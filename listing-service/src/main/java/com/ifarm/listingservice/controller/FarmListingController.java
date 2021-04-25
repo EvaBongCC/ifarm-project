@@ -249,6 +249,13 @@ public class FarmListingController {
 		countTypes = farmListingService.findAllListingType();
 		return countTypes;
 	}
+	
+	@RequestMapping(method = RequestMethod.GET, path = "/farmListing/retrieve/booked/type")
+	public HashMap<String, Integer> findAllBookedListingType() {
+		HashMap<String, Integer> countTypes = new HashMap<String, Integer>();
+		countTypes = farmListingService.findAllBookListingType();
+		return countTypes;
+	}
 
 	
 }
