@@ -18,7 +18,8 @@ import { AddFarmerInventoryComponent } from './farm-listing/add-farmer-inventory
 import { FarmerMonitorPlanComponent } from './monitor-listing/farmer-monitor-plan/farmer-monitor-plan.component';
 import { WorkerMonitorPlanComponent } from './monitor-listing/worker-monitor-plan/worker-monitor-plan.component';
 import { WorkerAddCropsFeedbackComponent} from './monitor-listing/worker-add-crops-feedback/worker-add-crops-feedback.component'
-
+import { ViewWorkerComponent} from './farm-listing/view-worker/view-worker.component'
+ 
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'home', component: HomeComponent, canActivate:[RouteGuardService]},
@@ -36,7 +37,8 @@ const routes: Routes = [
   {path: 'farmermonitorplan', component: FarmerMonitorPlanComponent, canActivate:[RouteGuardService]},
   {path: 'workermonitorplan', component:WorkerMonitorPlanComponent, canActivate:[RouteGuardService]},
   {path: 'workeraddcropsfeedbackplan', component:WorkerAddCropsFeedbackComponent, canActivate:[RouteGuardService]},
-  {path: 'workeraddcropsfeedbackplan/:monitorPlanId', component:WorkerAddCropsFeedbackComponent, canActivate:[RouteGuardService]}
+  {path: 'workeraddcropsfeedbackplan/:monitorPlanId', component:WorkerAddCropsFeedbackComponent, canActivate:[RouteGuardService]},
+  {path: 'viewworker', component:ViewWorkerComponent, canActivate:[RouteGuardService]}
 ];
 
 @NgModule({

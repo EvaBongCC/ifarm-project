@@ -1,6 +1,7 @@
 package com.ifarm.listingservice.controller;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -18,10 +19,12 @@ import com.ifarm.listingservice.entity.FarmInventory;
 import com.ifarm.listingservice.entity.FarmListing;
 import com.ifarm.listingservice.entity.FarmListingInventory;
 import com.ifarm.listingservice.entity.FarmWorkerRequest;
+import com.ifarm.listingservice.entity.Worker;
 import com.ifarm.listingservice.service.FarmInventoryService;
 import com.ifarm.listingservice.service.FarmListingInventoryService;
 import com.ifarm.listingservice.service.FarmListingService;
 import com.ifarm.listingservice.service.FarmWorkerRequestService;
+import com.ifarm.listingservice.service.WorkerService;
 import com.ifarm.listingservice.web.FarmInventoryForm;
 
 @CrossOrigin(origins="http://localhost:4200")
@@ -39,6 +42,9 @@ public class FarmListingController {
 	
 	@Autowired
 	private FarmListingInventoryService farmInventoryListingService;
+	
+	@Autowired
+	private WorkerService workerService;
 	
 	@RequestMapping(method = RequestMethod.POST, path = "/farmListing/add")
 	public FarmListing saveListing(@RequestBody FarmListing form) {
@@ -248,6 +254,22 @@ public class FarmListingController {
 		HashMap<String, Integer> countTypes = new HashMap<String, Integer>();
 		countTypes = farmListingService.findAllListingType();
 		return countTypes;
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, path = "/farmListing/retrieveWorker/{username}")
+	public List<Worker> findWorkerListing(@PathVariable("username") String workerName) {
+		List<Worker> workers = new ArrayList<Worker>();
+		for(Worker worker : workerService.findAllListing()) {
+			if(worker.getName().toUpperCase().equals(workerName.toUpperCase())) {
+				workers.add(worker);
+			}
+		}
+		return workers;	
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, path = "/farmListing/retrieveAllWorker")
+	public List<Worker> findAllWorkerListing() {
+		return workerService.findAllListing();
 	}
 
 	

@@ -11,7 +11,8 @@
           <li *ngIf="authService.getUser().indexOf('admin') > -1"><a routerLink="/inventory" class="nav-link">Farm Inventory</a></li>
           <li *ngIf="authService.getUser().indexOf('farmer') > -1"><a routerLink="/farmermonitorplan" class="nav-link">Monitoring & Planning</a></li>
           <li *ngIf="authService.getUser().indexOf('worker') > -1"><a routerLink="/workermonitorplan" class="nav-link">Monitoring & Planning </a></li>
-      </ul>
+          <li *ngIf="authService.getUser().indexOf('admin') > -1"><a routerLink="/viewworker" class="nav-link">Worker</a></li>
+        </ul>
       <ul class="navbar-nav navbar-collapse justify-content-end" *ngIf="authService.isUserLoggedIn()">
         <li>
           <span class="nav-link disabled">Login User: {{authService.getUser()}}</span>

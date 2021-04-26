@@ -28,8 +28,16 @@ export class WorkerListingComponent implements OnInit {
     image: null
   }
 
+  workerList = {
+    workerId : null,
+    name : '',
+    workType : '',
+    employment : ''
+  }
+
   farmId: number;
   workerName = "";
+  username: string = "";
 
   constructor(
     private requestService: RequestService,
@@ -39,7 +47,9 @@ export class WorkerListingComponent implements OnInit {
     private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.username = this.authentication.getUser();
     this.retrieveAllListings();
+    this.retrieveWorkerListings();
     console.log("init worker listing page..");
 
   }
@@ -50,6 +60,14 @@ export class WorkerListingComponent implements OnInit {
       data => {
         this.listings = data as any;
         console.log(data);
+      }
+    );
+  }
+
+  retrieveWorkerListings(){
+    this.requestService.get(`/farmListing/retrieveWorker/${this.username}`).subscribe(
+      data => {
+        this.workerList = data as any;
       }
     );
   }

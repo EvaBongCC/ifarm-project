@@ -28,6 +28,7 @@ import { FarmerMonitorPlanComponent } from './monitor-listing/farmer-monitor-pla
 
 import { WorkerMonitorPlanComponent } from './monitor-listing/worker-monitor-plan/worker-monitor-plan.component';
 import { WorkerAddCropsFeedbackComponent } from './monitor-listing/worker-add-crops-feedback/worker-add-crops-feedback.component';
+import {ViewWorkerComponent} from './farm-listing/view-worker/view-worker.component'
 import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
@@ -48,7 +49,8 @@ import { ChartsModule } from 'ng2-charts';
     AddFarmerInventoryComponent,
     FarmerMonitorPlanComponent,
     WorkerMonitorPlanComponent,
-    WorkerAddCropsFeedbackComponent
+    WorkerAddCropsFeedbackComponent,
+    ViewWorkerComponent
   ],
   imports: [
     BrowserModule,
