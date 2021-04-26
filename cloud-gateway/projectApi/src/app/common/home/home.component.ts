@@ -15,21 +15,34 @@ export class HomeComponent implements OnInit {
   username: string = '';
 
   countType: [];
+  countBookedType: [];
 
-  cropsCount: number;
-  flowerCount: number;
-  fruitsCount: number;
-  vegetableCount: number;
-  othersCount: number;
+  cropsCount: number = 0;
+  flowerCount: number = 0;
+  fruitsCount: number = 0;
+  vegetableCount: number = 0;
+  othersCount: number = 0;
+
+  cropsBookCount: number = 0;
+  flowerBookCount: number = 0;
+  fruitsBookCount: number = 0;
+  vegetableBookCount: number = 0;
+  othersBookCount: number = 0;
 
 
   //countType: Map<string, number>;
 
-  doughnutChartLabels: Label[];
-  doughnutChartData: MultiDataSet = [
+  typeChartLabels: Label[];
+  typeChartData: MultiDataSet = [
     []
   ];
-  doughnutChartType: ChartType;
+  typeChartType: ChartType;
+
+  bookTypeChartLabels: Label[];
+  bookTypeChartData: MultiDataSet = [
+    []
+  ];
+  bookTypeChartType: ChartType;
 
 
   constructor(private authService: AuthenticationService,
@@ -40,6 +53,7 @@ export class HomeComponent implements OnInit {
 
     this.username = this.authService.getUser();
     this.retrieveAllFarmTypes();
+    this.retrieveAllBookFarmTypes();
   }
 
   retrieveAllFarmTypes(){
@@ -56,18 +70,44 @@ export class HomeComponent implements OnInit {
            this.fruitsCount = this.countType["Fruits"];
            this.vegetableCount = this.countType["Vegetables"];
            this.othersCount = this.countType["Others"];
-          console.log(key, this.countType[key]);
         }
 
         console.log("init doughnut chart..");
-        this.doughnutChartLabels = ['Crops', 'Flowers', 'Fruits', 'Vegetables', 'Others'];
-        this.doughnutChartData = [
+        this.typeChartLabels = ['Crops', 'Flowers', 'Fruits', 'Vegetables', 'Others'];
+        this.typeChartData = [
           [this.cropsCount, this.flowerCount, this.fruitsCount, this.vegetableCount, this.othersCount]
         ];
-        this.doughnutChartType = 'doughnut';
+        this.typeChartType = 'doughnut';
+      }
+    );
+  }
+
+  retrieveAllBookFarmTypes() {
+    this.requestService.get('/farmListing/retrieve/booked/type').subscribe(
+      data => {
+        console.log('retrieving data from backend..');
+        this.countBookedType = data as any;
+        console.log(this.countBookedType);
+
+        for (var key in this.countBookedType) {
+            this.cropsBookCount = this.countBookedType["Crops"];
+            this.flowerBookCount = this.countBookedType["Flower"];
+            this.fruitsBookCount = this.countBookedType["Fruits"];
+            this.vegetableBookCount = this.countBookedType["Vegetables"];
+            this.othersBookCount = this.countBookedType["Others"];
+        }
+
+        console.log("init book type doughnut chart..");
+        this.bookTypeChartLabels = ['Crops', 'Flowers', 'Fruits', 'Vegetables', 'Others'];
+        this.bookTypeChartData = [
+          [this.cropsBookCount, this.flowerBookCount, this.fruitsBookCount, this.vegetableBookCount, this.othersBookCount]
+        ];
+        this.bookTypeChartType = 'doughnut';
       }
     );
 
   }
+
+
 
 }

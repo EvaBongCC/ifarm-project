@@ -75,4 +75,19 @@ public class FarmListingService {
 		return countTypes;
 	}
 	
+	public HashMap<String, Integer> findAllBookListingType() {
+		HashMap<String, Integer> countTypes = new HashMap<String, Integer>();
+		Integer cropsCount = farmListingRepository.countByBookListingType("Crops");
+		Integer flowerCount = farmListingRepository.countByBookListingType("Flower");
+		Integer fruitsCount = farmListingRepository.countByBookListingType("Fruits");
+		Integer vegeCount = farmListingRepository.countByBookListingType("Vegetables");
+		Integer othersCount = farmListingRepository.countByBookListingType("Others");
+		countTypes.put("Crops", cropsCount);
+		countTypes.put("Flower", flowerCount);
+		countTypes.put("Fruits", fruitsCount);
+		countTypes.put("Vegetables", vegeCount);
+		countTypes.put("Others", othersCount);
+		return countTypes;
+	}
+	
 }
