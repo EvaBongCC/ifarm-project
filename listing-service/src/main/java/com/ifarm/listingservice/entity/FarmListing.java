@@ -42,10 +42,6 @@ public class FarmListing {
 	private List<FarmInventory> farmInventoryList;
 	private Blob image;
 	
-	public FarmListing() {
-		
-	}
-	
 	public Long getFarmId() {
 		return farmId;
 	}

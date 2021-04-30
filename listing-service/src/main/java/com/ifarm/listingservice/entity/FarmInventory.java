@@ -26,10 +26,6 @@ public class FarmInventory {
 	private BigDecimal price;
 	private int unit;
 	
-	public FarmInventory() {
-		
-	}
-
 	public Long getInventId() {
 		return inventId;
 	}

@@ -28,10 +28,6 @@ public class MonitorPlan {
 	private String mineralLevel;
 	private String soilLevel;
 	
-	
-	public MonitorPlan() {
-		
-	}
 	public String getRemarks() {
 		return remarks;
 	}

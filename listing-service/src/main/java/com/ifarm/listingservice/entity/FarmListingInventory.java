@@ -33,10 +33,6 @@ import lombok.NoArgsConstructor;
 		private int unit;
 		private BigDecimal total;
 		
-		public FarmListingInventory() {
-			
-		}
-
 		public Long getInventId() {
 			return inventId;
 		}

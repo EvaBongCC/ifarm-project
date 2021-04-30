@@ -27,10 +27,6 @@ public class FarmWorkerRequest {
 	private String worker;
 	private String status;
 	
-	public FarmWorkerRequest() {
-		
-	}
-	
 	public Long getRequestId() {
 		return requestId;
 	}
