@@ -1,7 +1,7 @@
 server:
-  port : 8765
+  port : 8761
  
 eureka:
- client: 
+ client:
   register-with-eureka: false
   fetch-registry: false
