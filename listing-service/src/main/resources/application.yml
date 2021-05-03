@@ -4,3 +4,16 @@ server:
 spring:
  application:
   name: LISTING-SERVICE
+  
+profiles: container
+jpa:
+    database: MYSQL
+    hibernate:
+        ddl-auto: validate
+
+
+datasource:
+    url: jdbc:mysql://ec2-3-141-98-206.us-east-2.compute.amazonaws.com:8137/ifarm
+    username: admin
+    password: admin123
+    driver-class-name: com.mysql.jdbc.Driver
