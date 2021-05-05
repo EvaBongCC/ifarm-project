@@ -4,9 +4,3 @@ server:
 spring:
  application:
   name: MONITOR-PLAN-SERVICE
-
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://13.212.200.191:8761/eureka/
